@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Waiting+for+the+Sunrise&display=swap');
+
+html {
+    font-family: Montserrat, serif;
+}
+
+body {
+    @apply bg-myGreen-200 p-2
+}
+
+h1 {
+    font-family: Waiting for the Sunrise, serif;
+}
+
+.input-group {
+    @apply py-4
+}
+
+.label {
+    @apply block mb-2 text-sm font-medium text-gray-900
+}
+
+.input {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-myPink-600 focus:border-myPink-600 block w-full p-2.5
+}
+
+.input-error {
+    @apply text-xs text-red-400
+}
+
+.primary-button {
+    @apply p-2 bg-myPink-600 text-white font-bold rounded-lg
+}
+
+.secondary-button {
+    @apply p-2 bg-black text-white font-bold rounded-lg
+}
+
+.filters p {
+    @apply py-1 px-3 border border-myGray-400
+}
+
+.filters p:first-child {
+    @apply rounded-tl-md rounded-bl-md
+}
+
+.filters p:last-child {
+    @apply rounded-tr-md rounded-br-md
+}
+
+.active-filter {
+    @apply bg-myGray-300
+}
