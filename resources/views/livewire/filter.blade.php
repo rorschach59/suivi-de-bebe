@@ -1,23 +1,35 @@
 @inject('dateService', 'App\Services\DateService')
 
 <div>
-    <div class="grid grid-cols-5 gap-6 place-items-center">
-        <div>
-            <img src="{{ Vite::asset('resources/images/marguerite.png') }}" alt="Marguerite">
+    <div class="grid grid-cols-4 gap-6">
+        <div class="place-self-center">
+            <img src="{{ Vite::asset('resources/images/marguerite.png') }}"
+                 alt="Marguerite"
+                 class="w-10">
         </div>
-        <div class="flex col-span-3 filters italic">
+        <div class="flex self-center col-span-3 filters italic">
             <p class="{{$filter === $dateService::DAY ? 'active-filter' : '' }}" wire:click="setFilter('{{ $dateService::DAY }}')">Jour</p>
             <p class="{{$filter === $dateService::WEEK ? 'active-filter' : '' }}" wire:click="setFilter('{{ $dateService::WEEK }}')">Semaine</p>
             <p class="{{$filter === $dateService::MONTH ? 'active-filter' : '' }}" wire:click="setFilter('{{ $dateService::MONTH }}')">Mois</p>
         </div>
-        <div>
-            <img src="{{ Vite::asset('resources/images/recherche.svg') }}" alt="Recherche">
-        </div>
     </div>
 
-    <div class="flex justify-end my-12 mr-6">
-        <img src="{{ Vite::asset('resources/images/marguerites.png') }}" alt="Marguerites">
+
+    <div class="relative mt-6 mb-12">
+
+        <input type="text" id="search" name="search"
+               class="input"
+               placeholder="biberon le 14 juillet"
+               required>
+        <img src="{{ Vite::asset('resources/images/recherche.svg') }}"
+             alt="Search"
+             class="absolute right-2.5 bottom-2.5">
     </div>
+
+{{--    <div>--}}
+{{--        <input type="text" class="input my-6">--}}
+{{--        <img src="{{ Vite::asset('resources/images/recherche.svg') }}" alt="Recherche">--}}
+{{--    </div>--}}
 
     @if($filter === $dateService::DAY)
         <livewire:view.day/>

@@ -33,7 +33,7 @@
         </div>
     @endif
 
-    <div class="relative overflow-x-auto mt-12 h-[300px] shadow-xl">
+    <div class="relative overflow-x-auto mt-12 h-[300px] shadow-xl bg-myGreen-400">
         <table class="w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase">
             <tr>
@@ -48,9 +48,9 @@
                 </th>
             </tr>
             </thead>
-            <tbody class="overflow-y-auto">
+            <tbody class="overflow-y-auto mx-1">
             @foreach($activities as $activity)
-                <tr class="border-b"
+                <tr class="border-b border-gray-300"
                     onclick="document.location = '{{ route('activities.update', ['activity' => $activity->id]) }}';">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ date('H:i', strtotime($activity->date)) }}
@@ -68,7 +68,10 @@
     </div>
 
     <div class="flex items-center mt-12">
-        <img src="{{ Vite::asset('resources/images/marguerite.png') }}" alt="Marguerite">
+        <img src="{{ Vite::asset('resources/images/marguerite.png') }}"
+             alt="Marguerite"
+             class="w-10"
+        >
         <h2 id="reminder" class="font-bold ml-4 w-full">Pense-bête</h2>
         <div class="flex justify-end pr-2 w-full">
 
