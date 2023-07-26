@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    @apply bg-myGreen-200 p-2
+    @apply bg-myGreen-200 p-4
 }
 
 h1 {
@@ -25,7 +25,7 @@ h1 {
 }
 
 .input {
-    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-myPink-600 focus:border-myPink-600 block w-full p-2.5
+    @apply bg-myGreen-400 border-none text-gray-900 text-sm rounded-lg focus:ring-myPink-600 focus:border-myPink-600 block w-full p-2.5
 }
 
 .input-error {
@@ -33,11 +33,15 @@ h1 {
 }
 
 .primary-button {
-    @apply p-2 bg-myPink-600 text-white font-bold rounded-lg
+    @apply p-2 bg-myPink-600 border border-myPink-600 text-white font-bold rounded-lg hover:bg-white hover:text-myPink-600
 }
 
 .secondary-button {
-    @apply p-2 bg-black text-white font-bold rounded-lg
+    @apply p-2 bg-black border border-black text-white font-bold rounded-lg hover:bg-white hover:text-black
+}
+
+.delete-button {
+    @apply p-2 bg-red-600 border border-red-600 text-white font-bold rounded-lg hover:bg-white hover:text-red-600
 }
 
 .filters p {

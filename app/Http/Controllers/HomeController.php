@@ -36,6 +36,6 @@ class HomeController extends Controller
 
         session()->push('date', $reminderDate);
 
-        return redirect()->route('home-index');
+        return redirect()->route('home.index');
     }
 }

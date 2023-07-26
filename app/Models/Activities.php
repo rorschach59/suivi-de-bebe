@@ -15,5 +15,6 @@ class Activities extends Model
         'name',
         'notes',
         'date',
+        'status',
     ];
 }
