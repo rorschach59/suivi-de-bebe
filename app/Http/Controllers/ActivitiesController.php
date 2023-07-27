@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RefreshApplicationEvent;
 use App\Http\Requests\ActivitiesRequest;
 use App\Models\Activities;
 use Illuminate\Http\RedirectResponse;
@@ -28,6 +29,7 @@ class ActivitiesController extends Controller
     public function postCreate(ActivitiesRequest $request): RedirectResponse
     {
         $activities = Activities::create($request->validated());
+        event(new RefreshApplicationEvent('Activity created'));
 
         return redirect()->route('home.index')->with('activity', 'Activité ajoutée');
     }
@@ -43,6 +45,7 @@ class ActivitiesController extends Controller
     public function postUpdate(Activities $activity, ActivitiesRequest $request): RedirectResponse
     {
         $activity->update($request->validated());
+        event(new RefreshApplicationEvent('Activity updated'));
 
         return redirect()->route('home.index')->with('activity', 'Activité modifiée');
     }
@@ -50,6 +53,7 @@ class ActivitiesController extends Controller
     public function delete(Activities $activity): RedirectResponse
     {
         $activity->update(['status' => 0]);
+        event(new RefreshApplicationEvent('Activity deleted'));
 
         return redirect()->route('home.index')->with('activity', 'Activité supprimée avec succès');
     }

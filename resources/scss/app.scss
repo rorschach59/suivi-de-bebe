@@ -28,6 +28,10 @@ h1 {
     @apply bg-myGreen-400 border-none text-gray-900 text-sm rounded-lg focus:ring-myPink-600 focus:border-myPink-600 block w-full p-2.5
 }
 
+.input-search {
+    @apply bg-myPink-600 border-none text-white placeholder-white text-sm rounded-lg focus:ring-myPink-600 focus:border-myPink-600 block w-full p-2.5
+}
+
 .input-error {
     @apply text-xs text-red-400
 }

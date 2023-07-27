@@ -67,13 +67,13 @@
         </table>
     </div>
 
-    <div class="flex items-center mt-12">
+    <div class="grid grid-cols-3 items-center mt-12">
         <img src="{{ Vite::asset('resources/images/marguerite.png') }}"
              alt="Marguerite"
              class="w-10"
         >
-        <h2 id="reminder" class="font-bold ml-4 w-full">Pense-bête</h2>
-        <div class="flex justify-end pr-2 w-full">
+        <h2 id="reminder" class="font-bold text-center">Pense-bête</h2>
+        <div class="justify-self-end self-end pr-2">
 
             <button data-modal-target="updateReminderModal" data-modal-toggle="updateReminderModal" class=""
                     type="button">
@@ -128,14 +128,11 @@
         </div>
     </div>
 
-    <div class="p-2 mt-2 bg-myGreen-400 rounded-lg mb-14">
-        @if( !empty($reminder) )
+    @if( !empty($reminder) )
+        <div class="p-2 mt-2 bg-myGreen-400 rounded-lg mb-14">
             {!! nl2br($reminder) !!}
-        @else
-            R.A.S. 😎
-        @endif
-    </div>
-
+        </div>
+    @endif
 
 </div>
 

@@ -14,22 +14,15 @@
         </div>
     </div>
 
-
-    <div class="relative mt-6 mb-12">
-
+    <div class="relative my-12">
         <input type="text" id="search" name="search"
-               class="input"
+               class="input-search"
                placeholder="biberon le 14 juillet"
                required>
         <img src="{{ Vite::asset('resources/images/recherche.svg') }}"
              alt="Search"
-             class="absolute right-2.5 bottom-2.5">
+             class="absolute right-2.5 bottom-2">
     </div>
-
-{{--    <div>--}}
-{{--        <input type="text" class="input my-6">--}}
-{{--        <img src="{{ Vite::asset('resources/images/recherche.svg') }}" alt="Recherche">--}}
-{{--    </div>--}}
 
     @if($filter === $dateService::DAY)
         <livewire:view.day/>

@@ -21,6 +21,8 @@ class Day extends Component
 
     public $reminder;
 
+    protected $listeners = ['render'];
+
     /**
      * @return void
      * @throws \Exception
