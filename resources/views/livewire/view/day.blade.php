@@ -67,72 +67,76 @@
         </table>
     </div>
 
-    <div class="grid grid-cols-3 items-center mt-12">
-        <img src="{{ Vite::asset('resources/images/marguerite.png') }}"
-             alt="Marguerite"
-             class="w-10"
-        >
-        <h2 id="reminder" class="font-bold text-center">Pense-bête</h2>
-        <div class="justify-self-end self-end pr-2">
-
-            <button data-modal-target="updateReminderModal" data-modal-toggle="updateReminderModal" class=""
-                    type="button">
-                <img src="{{ Vite::asset('resources/images/stylo.svg') }}" alt="Stylo">
-            </button>
-
-            <div id="updateReminderModal" tabindex="-1" aria-hidden="true"
-                 class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
-                 wire:ignore.self
+    <div class="my-12">
+        <div class="grid grid-cols-3 items-center">
+            <img src="{{ Vite::asset('resources/images/marguerite.png') }}"
+                 alt="Marguerite"
+                 class="w-10"
             >
-                <div class="relative w-full max-w-2xl max-h-full">
-                    <div class="relative bg-white rounded-lg shadow">
-                        <div class="flex items-start justify-between p-4 border-b rounded-t bg-myGreen-200">
-                            <h3 class="font-semibold text-gray-900">
-                                Modifier le pense-bête
-                            </h3>
-                            <button type="button"
-                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
-                                    data-modal-hide="updateReminderModal">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                     viewBox="0 0 14 14">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                          stroke-width="2"
-                                          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                </svg>
-                                <span class="sr-only">Close modal</span>
-                            </button>
-                        </div>
-                        <form action="{{ route('post.reminder') }}#reminder" method="post" class="bg-myGreen-200">
-                            @csrf
-                            <input type="hidden" name="date" value="{{ $date }}">
-                            <div class="p-2 space-y-6 text-center">
+            <h2 id="reminder" class="font-bold text-center">Pense-bête</h2>
+            <div class="justify-self-end self-end pr-2">
+
+                <button data-modal-target="updateReminderModal" data-modal-toggle="updateReminderModal" class=""
+                        type="button">
+                    <img src="{{ Vite::asset('resources/images/stylo.svg') }}" alt="Stylo">
+                </button>
+
+                <div id="updateReminderModal" tabindex="-1" aria-hidden="true"
+                     class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+                     wire:ignore.self
+                >
+                    <div class="relative w-full max-w-2xl max-h-full">
+                        <div class="relative bg-white rounded-lg shadow">
+                            <div class="flex items-start justify-between p-4 border-b rounded-t bg-myGreen-200">
+                                <h3 class="font-semibold text-gray-900">
+                                    Modifier le pense-bête
+                                </h3>
+                                <button type="button"
+                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+                                        data-modal-hide="updateReminderModal">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                         fill="none"
+                                         viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                              stroke-width="2"
+                                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                            </div>
+                            <form action="{{ route('post.reminder') }}#reminder" method="post" class="bg-myGreen-200">
+                                @csrf
+                                <input type="hidden" name="date" value="{{ $date }}">
+                                <div class="p-2 space-y-6 text-center">
                         <textarea name="reminder"
                                   id="reminder"
                                   rows="10"
                                   class="input"
                         >{!! $reminder !!}</textarea>
-                            </div>
-                            <div class="flex justify-around p-2 space-x-2">
-                                <button data-modal-hide="updateReminderModal" type="submit" class="primary-button">
-                                    Modifier
-                                </button>
-                                <button data-modal-hide="updateReminderModal" type="button" class="secondary-button">
-                                    Annuler
-                                </button>
-                            </div>
-                        </form>
+                                </div>
+                                <div class="flex justify-around p-2 space-x-2">
+                                    <button data-modal-hide="updateReminderModal" type="submit" class="primary-button">
+                                        Modifier
+                                    </button>
+                                    <button data-modal-hide="updateReminderModal" type="button"
+                                            class="secondary-button">
+                                        Annuler
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
+
             </div>
-
         </div>
+
+        @if( !empty($reminder) )
+            <div class="p-2 mt-2 bg-myGreen-400 rounded-lg mb-14">
+                {!! nl2br($reminder) !!}
+            </div>
+        @endif
     </div>
-
-    @if( !empty($reminder) )
-        <div class="p-2 mt-2 bg-myGreen-400 rounded-lg mb-14">
-            {!! nl2br($reminder) !!}
-        </div>
-    @endif
 
 </div>
 
