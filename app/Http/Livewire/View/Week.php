@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\View;
 
+use App\Models\Activities;
 use App\Services\DateService;
 use DateTime;
 use Exception;
@@ -9,17 +10,13 @@ use Livewire\Component;
 
 class Week extends Component
 {
-    /**
-     * @var string
-     */
-    public string $criteria = "";
 
     /**
      * @var array|string
      */
     public array|string $week = [];
 
-    public function mount()
+    public function mount(): void
     {
         $this->week = (new DateTime())->format('Y-m-d');
     }
@@ -40,8 +37,19 @@ class Week extends Component
     {
         $this->week = $dateService->getWeek($this->week);
 
+        $activities = Activities::query()
+            ->where('status', '=', 1)
+            ->whereBetween('date', [$this->week['firstDateOfWeek'], $this->week['lastDateOfWeek']])
+            ->orderBy('date', 'asc')
+            ->get();
+
+        foreach ($activities as $activity) {
+            // flemme
+        }
+
         return view('livewire.view.week', [
-            'week' => $this->week
+            'week' => $this->week,
+            'activities' => $activities
         ]);
     }
 }

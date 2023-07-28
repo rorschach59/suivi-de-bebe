@@ -88,9 +88,11 @@ class DateService
         $currentWeek = $currentDate->format('W');
         $currentYear = $currentDate->format('Y');
         $firstDayOfWeek = $this->getFirstAndLastDayOfWeek($currentYear, $currentWeek)->firstDay->format('d');
+        $firstDateOfWeek = $this->getFirstAndLastDayOfWeek($currentYear, $currentWeek)->firstDay->format('Y-m-d');
         $monthOfFirstDayOfWeek = $this->getFirstAndLastDayOfWeek($currentYear, $currentWeek)->firstDay->format('F');
         $monthOfFirstDayOfWeek = str_replace($this->englishMonths, $this->frenchMonths, $monthOfFirstDayOfWeek);
         $lastDayOfWeek = $this->getFirstAndLastDayOfWeek($currentYear, $currentWeek)->lastDay->format('d');
+        $lastDateOfWeek = $this->getFirstAndLastDayOfWeek($currentYear, $currentWeek)->lastDay->format('Y-m-d');
         $monthOflastDayOfWeek = $this->getFirstAndLastDayOfWeek($currentYear, $currentWeek)->lastDay->format('F');
         $monthOflastDayOfWeek = str_replace($this->englishMonths, $this->frenchMonths, $monthOflastDayOfWeek);
         $previousWeek = $currentDate->sub(new DateInterval('P1W'))->format('Y-m-d');
@@ -100,6 +102,48 @@ class DateService
             'formatted' => "Du $firstDayOfWeek $monthOfFirstDayOfWeek au $lastDayOfWeek $monthOflastDayOfWeek $currentYear",
             'previousWeek' => $previousWeek,
             'nextWeek' => $nextWeek,
+            'firstDateOfWeek' => $firstDateOfWeek,
+            'lastDateOfWeek' => $lastDateOfWeek,
+        ];
+    }
+
+    /**
+     * @param array|string $month
+     * @return array
+     */
+    public function getMonth(array|string $month): array
+    {
+        if ($month != '') {
+            $currentDate = (new DateTime())::createFromFormat("Y-m", $month);
+        } else {
+            $currentDate = new DateTime();
+        }
+
+        $year = $currentDate->format('Y');
+        $frenchMonth = $currentDate->format('F');
+        $frenchMonth = str_replace($this->englishMonths, $this->frenchMonths, $frenchMonth);
+        $weekNumberOfFirstDayOfMonth = (clone $currentDate->modify('first day of'))->format('N');
+        $currentMonth = $currentDate->format('m');
+        $previousMonth = $currentDate->sub(new DateInterval('P1M'))->format('Y-m');
+        $nextMonth = $currentDate->add(new DateInterval('P2M'))->format('Y-m');
+
+        $date = new DateTime($month . '-01');
+        $dates = [];
+        while ($date->format('Y-m') <= $month) {
+            $d = $date->format('j');
+            $w = str_replace('0', '7', $date->format('w'));
+            $dates[$d] = $w;
+            $date->add(new DateInterval('P1D'));
+        }
+
+        return [
+            'formatted' => "$frenchMonth $year",
+            'previousMonth' => $previousMonth,
+            'currentMonth' => $currentMonth,
+            'nextMonth' => $nextMonth,
+            'year' => $year,
+            'weekNumberOfFirstDayOfMonth' => $weekNumberOfFirstDayOfMonth,
+            'dates' => $dates,
         ];
     }
 

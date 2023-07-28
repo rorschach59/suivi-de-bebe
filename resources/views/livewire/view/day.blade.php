@@ -128,7 +128,7 @@
         </div>
     </div>
 
-    <div class="p-2 mt-2 bg-myGreen-400 rounded-lg mb-14">
+    <div class="p-2 mt-2 bg-myGreen-400 rounded-lg mb-14 {{ empty($reminder) ? 'h-10' : '' }}">
         @if( !empty($reminder) )
             {!! nl2br($reminder) !!}
         @endif

@@ -27,10 +27,9 @@
     @if($filter === $dateService::DAY)
         <livewire:view.day/>
     @elseif($filter === $dateService::WEEK)
-        <p>A venir</p>
-{{--        <livewire:view.week/>--}}
+        <livewire:view.week/>
     @elseif($filter === $dateService::MONTH)
-        <p>A venir</p>
+        <livewire:view.month/>
     @else
         <livewire:view.day/>
     @endif
