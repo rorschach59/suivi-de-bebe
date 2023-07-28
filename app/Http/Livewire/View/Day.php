@@ -5,7 +5,13 @@ namespace App\Http\Livewire\View;
 use App\Models\Activities;
 use App\Models\Reminders;
 use App\Services\DateService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class Day extends Component
 {
@@ -21,7 +27,7 @@ class Day extends Component
 
     public $reminder;
 
-    protected $listeners = ['render'];
+    protected $listeners = ['refreshApplication' => '$refresh'];
 
     /**
      * @return void
@@ -44,9 +50,9 @@ class Day extends Component
 
     /**
      * @param DateService $dateService
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @return Application|Factory|View
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function render(DateService $dateService)
     {
@@ -56,6 +62,7 @@ class Day extends Component
             session()->forget('date');
         } else {
             $this->date = $dateService->getDate($this->criteria, $this->date);
+            $this->criteria = "";
         }
 
         $activities = Activities::query()

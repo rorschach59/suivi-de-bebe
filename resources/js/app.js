@@ -16,8 +16,8 @@ window.Echo = new Echo({
     forceTLS: true
 });
 
-let channel = window.Echo.channel('refresh-application');
+let channel = window.Echo.channel(import.meta.env.VITE_PUSHER_CHANNEL);
 channel.listen('.refresh-application', function(data) {
     console.log(JSON.stringify(data))
-    Livewire.emit('render');
+    Livewire.emit('refreshApplication');
 });

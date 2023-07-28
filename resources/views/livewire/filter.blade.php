@@ -17,7 +17,7 @@
     <div class="relative my-12">
         <input type="text" id="search" name="search"
                class="input-search"
-               placeholder="biberon le 14 juillet"
+               placeholder="Recherche"
                required>
         <img src="{{ Vite::asset('resources/images/recherche.svg') }}"
              alt="Search"

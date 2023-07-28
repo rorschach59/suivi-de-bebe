@@ -23,7 +23,7 @@ class RefreshApplicationEvent implements ShouldBroadcast
 
     public function broadcastOn(): Channel
     {
-        return new Channel('refresh-application');
+        return new Channel(env('PUSHER_CHANNEL'));
     }
 
     public function broadcastAs(): string
