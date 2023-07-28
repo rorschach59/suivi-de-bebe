@@ -40,7 +40,9 @@ class Month extends Component
      */
     public function setDay(string $day): void
     {
-        $this->day = $day;
+        $day = explode('-', $day);
+        $this->setMonth($day[0] . '-' . $day[1]);
+        $this->day = $day[2];
     }
 
     public function boot(): void

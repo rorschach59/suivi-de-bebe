@@ -27,21 +27,21 @@
                         <tbody>
                         <tr>
                         @foreach($month['dates'] as $date => $w)
-                            <td class="pt-6" {{ $date == 1 ? 'colspan='.$month['weekNumberOfFirstDayOfMonth'] : '' }} wire:click="setDay({{ $date }})">
-                                @if(now()->format('d') == $date && now()->format('m') == $month['currentMonth'])
-                                    <div class="w-full h-full">
-                                        <div
-                                            class="flex items-center justify-center w-full rounded-full cursor-pointer">
-                                            <a role="link" tabindex="0"
-                                               class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-myPink-800 focus:bg-myPink-800 hover:bg-myPink-800 w-8 h-8 flex items-center justify-center font-medium text-white bg-myPink-600 rounded-full">{{ $date }}</a>
-                                        </div>
-                                    </div>
-                                @else
+                            <td class="pt-6" {{ $date == 1 ? 'colspan='.$month['weekNumberOfFirstDayOfMonth'] : '' }} wire:click="setDay('{{ $month['year'] . '-' .$month['currentMonth'] . '-' . $date }}')">
+{{--                                @if(now()->format('d') == $date && now()->format('m') == $month['currentMonth'])--}}
+{{--                                    <div class="w-full h-full">--}}
+{{--                                        <div--}}
+{{--                                            class="flex items-center justify-center w-full rounded-full cursor-pointer">--}}
+{{--                                            <a role="link" tabindex="0"--}}
+{{--                                               class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-myPink-800 focus:bg-myPink-800 hover:bg-myPink-800 w-8 h-8 flex items-center justify-center font-medium text-white bg-myPink-600 rounded-full">{{ $date }}</a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                @else--}}
                                     <div
                                         class="py-2 cursor-pointer flex w-full {{ $date == 1 ? 'justify-end px-5' : 'justify-center px-2' }}">
                                         <p class="{{ $date == $day ? 'text-myPink-600 font-bold' : 'text-gray-500' }} hover:text-myPink-600 focus:text-myPink-600">{{ $date }}</p>
                                     </div>
-                                @endif
+{{--                                @endif--}}
                                 @if($w == 7)
                         </tr><tr>
                             @endif
