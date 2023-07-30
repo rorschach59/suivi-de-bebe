@@ -26,7 +26,6 @@ class Filter extends Component
     public function setFilter(string $filter): void
     {
         $this->filter = $filter;
-        $this->dispatchBrowserEvent('initFlowbite');
     }
 
     /**
@@ -41,6 +40,7 @@ class Filter extends Component
                 ->orderBy('date', 'asc')
                 ->get();
         }
+        $this->dispatchBrowserEvent('initFlowbite');
 
         return view('livewire.filter', [
             'filter' => $this->filter,

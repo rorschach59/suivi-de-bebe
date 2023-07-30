@@ -78,11 +78,12 @@
             <livewire:view.day/>
         @endif
 
-        <script>
-            window.addEventListener("initFlowbite", event => {
-                initFlowbite();
-            })
-        </script>
-
     @endif
+
+    <script>
+        window.addEventListener("initFlowbite", event => {
+            initFlowbite();
+        })
+    </script>
+
 </div>
