@@ -110,7 +110,7 @@
                                   id="reminder"
                                   rows="10"
                                   class="input"
-                        >{!! nl2br($reminder) !!}</textarea>
+                        >{!! $reminder !!}</textarea>
                             </div>
                             <div class="flex justify-around p-2 space-x-2">
                                 <button data-modal-hide="updateReminderModal" type="submit" class="primary-button">

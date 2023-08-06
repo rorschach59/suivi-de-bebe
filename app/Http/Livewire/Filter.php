@@ -37,6 +37,7 @@ class Filter extends Component
         if ($this->query !== "") {
             $activities = Activities::query()
                 ->where('name', 'like', '%' . $this->query . '%')
+                ->where('status', '=', 1)
                 ->orderBy('date', 'asc')
                 ->get();
         }

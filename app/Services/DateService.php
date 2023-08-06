@@ -130,7 +130,7 @@ class DateService
         $date = new DateTime($month . '-01');
         $dates = [];
         while ($date->format('Y-m') <= $month) {
-            $d = $date->format('j');
+            $d = $date->format('d');
             $w = str_replace('0', '7', $date->format('w'));
             $dates[$d] = $w;
             $date->add(new DateInterval('P1D'));
