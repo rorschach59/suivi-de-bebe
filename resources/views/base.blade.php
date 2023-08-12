@@ -16,17 +16,6 @@
     @livewireStyles
     @yield('assets')
 
-    <!-- PushAlert -->
-    <script type="text/javascript">
-        (function(d, t) {
-            var g = d.createElement(t),
-                s = d.getElementsByTagName(t)[0];
-            g.src = "https://cdn.pushalert.co/integrate_533c32d219712dc07804c93abff52b3f.js";
-            s.parentNode.insertBefore(g, s);
-        }(document, "script"));
-    </script>
-    <!-- End PushAlert -->
-
 </head>
 <body>
 

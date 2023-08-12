@@ -1,6 +1,5 @@
 import './bootstrap';
 import 'flowbite';
-import './sw';
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 
