@@ -6,12 +6,16 @@
 
     <form action="" method="POST" class="mt-12">
         @csrf
+
         <div class="input-group">
             <label for="name" class="label">Activité</label>
-            <input type="text" id="name" name="name"
-                   class="input" placeholder="Biberon, Change, Sieste, Balade, Sortie" required
-                   value="{{ old('name', $activities->name) }}"
-            >
+            <input type="text" name="name" list="names" class="input" required
+                   value="{{ old('name', $activities->name) }}">
+            <datalist id="names">
+                @foreach($activitiesNames as $activitiesName)
+                    <option value="{{ $activitiesName->name }}">
+                @endforeach
+            </datalist>
             @error('name')
             <div class="input-error">{{ $message }}</div>
             @enderror

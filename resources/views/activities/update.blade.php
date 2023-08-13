@@ -6,14 +6,17 @@
 
     <form action="" method="POST" class="mt-12">
         @csrf
+
         <div class="input-group">
             <label for="name" class="label">Activité</label>
-            <input type="text" id="name" name="name"
-                   class="input" required
-                   value="{{ $activity->name }}"
-            >
+            <input type="text" name="name" list="names" class="input" required value="{{ $activity->name }}">
+            <datalist id="names">
+                @foreach($activitiesNames as $activitiesName)
+                    <option value="{{ $activitiesName->name }}">
+                @endforeach
+            </datalist>
             @error('name')
-                <div class="input-error">{{ $message }}</div>
+            <div class="input-error">{{ $message }}</div>
             @enderror
         </div>
         <div class="input-group">
@@ -22,7 +25,7 @@
                       class="input"
             >{{ $activity->notes }}</textarea>
             @error('notes')
-                <div class="input-error">{{ $message }}</div>
+            <div class="input-error">{{ $message }}</div>
             @enderror
         </div>
 
