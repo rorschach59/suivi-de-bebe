@@ -26,7 +26,7 @@ class AuthController extends Controller
             return redirect()->intended(route('home.index'));
         }
 
-        return to_route('auth.login')
+        return to_route('login')
             ->withErrors([
                 'name' => ''
             ])
