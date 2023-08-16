@@ -43,13 +43,18 @@ class Week extends Component
             ->orderBy('date', 'asc')
             ->get();
 
+        $activitiesByWeek = [];
         foreach ($activities as $activity) {
-            // flemme
+            $activitiesByWeek[date('Y-m-d', strtotime($activity->date))][] = [
+                'id' => $activity->id,
+                'name' => $activity->name,
+                'date' => date('H:i', strtotime($activity->date)),
+            ];
         }
 
         return view('livewire.view.week', [
             'week' => $this->week,
-            'activities' => $activities
+            'activities' => $activitiesByWeek
         ]);
     }
 }

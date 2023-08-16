@@ -182,4 +182,15 @@ class DateService
         $date = str_replace($this->frenchDays, $this->englishDays, $date);
         return $date;
     }
+
+    /**
+     * @param string $date
+     * @return string
+     */
+    public function getFrenchDate(string $date): string
+    {
+        $date = str_replace($this->englishMonths, $this->frenchDays, $date);
+        $date = str_replace($this->englishDays, $this->frenchDays, $date);
+        return $date;
+    }
 }
