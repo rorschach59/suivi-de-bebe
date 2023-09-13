@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Activities;
+use App\Models\Reminders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ActivitiesSeeder extends Seeder
+class RemindersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class ActivitiesSeeder extends Seeder
      */
     public function run()
     {
-        Activities::factory(800)->create();
+        Reminders::factory(800)->create();
     }
 }
